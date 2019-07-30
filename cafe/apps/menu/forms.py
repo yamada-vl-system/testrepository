@@ -1,6 +1,6 @@
 from django import forms
 
-from menu.modles import Tea, TEA_KINDS
+from menu.models import Tea, TEA_KINDS
 
 
 class TeaSearchForm(forms.Form):

@@ -41,4 +41,4 @@ class TestSearchFormTest(unittest.TestCase):
         """種類を入力すればエラーにならないことを検証する。"""
         params = dict(kind=["english", "chinese"])
         form = TeaSearchForm(params)
-        self.assertEqual(form.is_valid, True, form.errors.as_text())
+        self.assertEqual(form.is_valid(), True, form.errors.as_text())
