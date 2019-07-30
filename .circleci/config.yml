@@ -2,17 +2,17 @@ version: 2
 jobs: 
   build:
     docker:
-      - image: circleci/python:3.6
+      - image: circleci/python:3.7
     steps:
       # ソースコードのチャックアウト
       - checkout
       - run: |
-          python3.6 -m venv venv
+          python3.7 -m venv venv
           source ./venv/bin/activate
           # pytestのインストール
-          pip install pytest
-          # pytestコマンドの実行
-          pytest test_calculations.py --junit-xml=test-results/pytest.xml
-      # テスト結果を保存する
-      - store_test_results:
-          path: test-results
+          pip install django
+          cd cafe/apps
+          # マイグレーションの実行
+          python manage.py migrate
+          # Djangoのテストを実行
+          python manage.py test
